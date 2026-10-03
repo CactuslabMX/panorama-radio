@@ -1,0 +1,9 @@
+/kernel/spotify.local.php
+/data/
+/init.conf
+.env
+.env.*
+!.env.example
+*.log
+Thumbs.db
+.DS_Store

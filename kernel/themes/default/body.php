@@ -1,0 +1,86 @@
+<section class="hero-banner">
+        <div class="hero-media">
+            <img src="<?= htmlspecialchars($baseUrl) ?>/assets/img/radio.gifv" alt="">
+            <div class="hero-overlay">
+                <p class="hero-status">Sonando ahora<span id="heroTrack" aria-live="polite">Consultando canción…</span><span id="playbackMessage" role="status"></span></p>
+                <button class="hero-play" id="heroPlayBtn" aria-label="Reproducir">
+                    <svg id="heroPlayIcon" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+                </button>
+                <div class="hero-volume">
+                    <button type="button" id="audioMute" aria-label="Silenciar audio" aria-pressed="false" title="Silenciar audio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path class="volume-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="volume-cross" d="m16 9 6 6m0-6-6 6"/></svg></button>
+                    <input id="audioVolume" type="range" min="0" max="100" value="100" aria-label="Volumen de la radio">
+                    <output id="audioVolumeValue" for="audioVolume">100%</output>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+<section class="recent-tracks" id="historial" aria-labelledby="historyHeading">
+    <h2 class="section-label" id="historyHeading">recién sonaron_</h2>
+    <p id="historyEmpty">Consultando las últimas canciones de RadioDJ…</p>
+    <ol id="trackHistory" tabindex="0" aria-label="Últimas canciones; desplázate para ver más"></ol>
+</section>
+
+<section class="about-wrapper" id="sobre">
+            <div class="section-label">sobre_</div>
+
+            <div class="about">
+                <img class="photo" src="<?= htmlspecialchars($baseUrl) ?>/assets/img/dj.webp" alt="">
+                <div class="about-text">
+                    <p>
+                        En Panorama valoramos la calidad musical y nos esforzamos por traer a artistas de renombre y talentos emergentes que representan lo mejor de la escena. Creemos en la importancia de crear un entorno inclusivo donde todos sean bienvenidos, independientemente de su origen, género o preferencias musicales.
+                    </p>
+                    <p class="section-sublabel">AL AIRE 24/7, SIN ANUNCIOS, SIN PROPAGANDA</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-label">programación_</div>
+        <section class="arrow-banner" id="programacion">
+            <div class="slot"><span class="time">00:00&ndash;08:00</span>Playlist automática</div>
+            <div class="slot"><span class="time">08:00&ndash;10:00</span>En vivo</div>
+            <div class="slot"><span class="time">10:00&ndash;24:00</span>Playlist automática</div>
+        </section>
+
+        <section class="merch-collection" id="merch" aria-labelledby="merchHeading">
+            <div class="merch-heading"><div><p class="merch-eyebrow">PANORAMA / OBJETOS 001</p><h2 id="merchHeading">Habitar el sonido.</h2></div><span class="merch-edition">Colección arquitectónica<br>Negro · Marfil · Amarillo</span></div>
+            <div class="merch-grid">
+                <?php foreach ([
+                    ['001', 'Volumen', 'Playera negra / Gráfica axonométrica', 'panorama-volumen.png', 'Playera negra PANORAMA con dibujo de volúmenes arquitectónicos'],
+                    ['002', 'Perfil', 'Gorra bicolor / Líneas en relieve', 'panorama-perfil.png', 'Gorra negra y marfil PANORAMA con símbolo arquitectónico'],
+                    ['003', 'Patio', 'Hoodie marfil / Plano de patio central', 'panorama-patio.png', 'Hoodie marfil PANORAMA con plano arquitectónico'],
+                ] as [$number, $name, $description, $file, $alt]): ?>
+                <article class="merch-item">
+                    <a class="merch-image" href="<?= htmlspecialchars($baseUrl) ?>/assets/img/<?= $file ?>" target="_blank" rel="noopener" aria-label="Ampliar diseño <?= $name ?>">
+                        <img class="photo" src="<?= htmlspecialchars($baseUrl) ?>/assets/img/<?= $file ?>" alt="<?= $alt ?>" loading="lazy" width="1254" height="1254">
+                        <span class="merch-zoom">Ver diseño ↗</span>
+                    </a>
+                    <div class="merch-name"><h3><?= $name ?></h3><span>/ <?= $number ?></span></div>
+                    <p class="merch-description"><?= $description ?></p>
+                </article>
+                <?php endforeach; ?>
+            </div>
+            <p class="merch-note">Vista previa de la colección · Próximamente</p>
+        </section>
+        <div class="section-label">escuchar_</div>
+        <section class="listen" id="escuchar">
+            <div class="status-badge" id="statusBadge">
+                <span class="dot" id="statusDot"></span>
+                <span id="statusText">Conectando...</span>
+            </div>
+
+            <audio id="audioPlayer" controls preload="none">
+                <source src="<?= htmlspecialchars($streamUrl) ?>" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+
+            <div class="now-playing">
+                <p class="label">Sonando ahora</p>
+                <p class="track" id="trackTitle">Cargando...</p>
+            </div>
+
+            <div class="listeners">
+                <span id="listenerCount">0</span> oyentes conectados
+            </div>
+        </section>

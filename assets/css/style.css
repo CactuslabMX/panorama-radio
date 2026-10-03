@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap');
+
+:root {
+    --ink: #000000;
+    --paper: #ffffff;
+    --yellow: #FFD600;
+    --red: #BE4949;
+    --ash: #7a7a7a;
+    --hair: rgba(255,255,255,0.14);
+    --hf: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --display: "Almarai", var(--hf);
+    --frame-w: 1240px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--hf);
+    background: var(--yellow);
+    color: var(--paper);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* ---------- Marco general del sitio ---------- */
+.site-frame {
+    background: var(--ink);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 40px);
+}
+
+/* ---------- Header: bandera + wordmark + nav escalonado ---------- */
+.header {
+    position: relative;
+    height: 190px;
+    flex-shrink: 0;
+}
+
+.header-inner {
+    position: relative;
+    max-width: var(--frame-w);
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header .flag {
+    position: absolute;
+    left: 3.63%;
+    top: 19px;
+    width: 61.05%;
+    height: 148px;
+    background-image: url('../img/shapes/rectangle-4.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 0 15px;        /* quitamos el padding-bottom, ya no lo necesitamos */
+    overflow: hidden;           /* por si el margen negativo saca el texto del contenedor */
+}
+
+.header .wordmark {
+    position: static;
+    font-size: clamp(30px, 4.8vw, 66px);
+    font-weight: 700;
+    font-family: var(--display);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-transform: uppercase;
+    line-height: 0.9;
+    z-index: 2;
+    margin: 0 0 -14px 0;        /* empuja el texto hacia abajo compensando el leading */
+    max-width: 55%;
+}
+
+.header .nav {
+    position: absolute;
+    left: 64.68%;
+    top: 60px;
+    width: 31.53%;
+    height: 107px;
+    background-image: url('../img/shapes/rectangle-5.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.header .nav a {
+    position: absolute;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 17px);
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: var(--hf);
+}
+.header .nav a.n-about   { left: 1.3%;  top: 17.8%; }
+.header .nav a.n-dates   { left: 13.8%; top: 45.8%; }
+.header .nav a.n-merch   { left: 27.1%; top: 71%; }
+.header .nav a.n-gallery { left: 53.2%; top: 71%; }
+.header .nav a.n-contact { left: 73.7%; top: 39.3%; }
+
+/* ---------- Banner "sonando" (inicio) ---------- */
+.hero-banner {
+    position: relative;
+    max-width: var(--frame-w);
+    margin: 0 auto;
+    padding: 0 3.63%;
+}
+.hero-banner .hero-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1148 / 589;
+    overflow: hidden;
+    background-color: #0a0a0a;
+}
+.hero-banner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1);
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 3;
+}
+.hero-status {
+    margin: 0;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--yellow);
+    text-transform: uppercase;
+    max-width: 220px;
+}
+.hero-status span {
+    display: block;
+    color: var(--paper);
+    font-size: 14px;
+    text-transform: none;
+    margin-top: 2px;
+}
+.hero-play {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--yellow);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.hero-play svg { width: 16px; height: 16px; fill: var(--ink); }
+.hero-overlay { flex-wrap: nowrap; }
+.hero-volume { flex-basis: auto; display: flex; align-items: center; justify-content: flex-end; gap: 10px; color: #bbb; font-size: 11px; }
+.hero-volume button { border: 0; background: transparent; color: inherit; padding: 8px; width: 36px; height: 36px; cursor: pointer; }
+.hero-volume button:hover { color: var(--yellow); }
+.hero-volume button:focus-visible, .hero-volume input:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+.hero-volume svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.volume-cross, [aria-pressed="true"] .volume-waves { display: none; }
+[aria-pressed="true"] .volume-cross { display: block; }
+.hero-volume input { appearance: none; width: 90px; height: 3px; border-radius: 2px; background: linear-gradient(to right, var(--yellow) var(--volume, 100%), #555 var(--volume, 100%)); cursor: pointer; }
+.hero-volume input::-webkit-slider-thumb { appearance: none; width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); }
+.hero-volume input::-moz-range-thumb { width: 9px; height: 9px; border: 0; border-radius: 50%; background: var(--yellow); }
+.hero-volume output { width: 32px; text-align: right; font-variant-numeric: tabular-nums; }
+.hero-overlay { background: rgba(0, 0, 0, .82); padding: 18px; max-width: calc(100% - 32px); border-radius: 4px; }
+.hero-status { max-width: 420px; }
+.hero-status #heroTrack { font-size: clamp(18px, 2.3vw, 30px); line-height: 1.15; margin-top: 8px; overflow-wrap: anywhere; }
+.hero-status #playbackMessage { font-size: 12px; font-weight: 400; }
+.hero-play { width: 56px; height: 56px; }
+.hero-play:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+.recent-tracks { margin: 0 3.63%; }
+#trackHistory { padding: 0; list-style: none; counter-reset: tracks; }
+#trackHistory li { counter-increment: tracks; display: flex; align-items: baseline; gap: 18px; border-top: 1px solid #444; padding: 20px 0; }
+#trackHistory li::before { content: counter(tracks, decimal-leading-zero); color: var(--yellow); font-size: 14px; }
+#trackHistory li span { flex: 1; font-size: clamp(17px, 2vw, 24px); font-weight: 700; overflow-wrap: anywhere; }
+#trackHistory time { color: #bbb; font-size: 13px; }
+#historyEmpty { color: #bbb; line-height: 1.6; }
+@media (max-width: 600px) {
+    .hero-overlay { right: 8px; top: 8px; padding: 12px; max-width: calc(100% - 16px); gap: 8px; }
+    .hero-volume input { width: 62px; }
+    .hero-volume output { display: none; }
+    .hero-play { width: 44px; height: 44px; }
+    .recent-tracks .section-label { font-size: 32px; }
+}
+
+/* Etiqueta "BUY TICKETS" / "NEW DATES" sobre el hero */
+.hero-tag {
+    position: absolute;
+    right: 14.5%;
+    bottom: 17%;
+    text-align: center;
+    z-index: 2;
+}
+.tag-badge {
+    display: inline-block;
+    background: var(--red);
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(11px, 1.1vw, 20px);
+    text-transform: uppercase;
+    padding: 8px 18px;
+    margin-bottom: 8px;
+}
+.tag-title {
+    margin: 0;
+    color: var(--yellow);
+    font-family: var(--display);
+    font-size: clamp(26px, 4vw, 64px);
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ---------- main / contenedor de secciones ---------- */
+main {
+    flex: 1;
+    max-width: var(--frame-w);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 3.63%;
+}
+
+.section-label {
+    text-align: right;
+    font-size: 48px;
+    font-weight: 700;
+    font-family: var(--hf);
+    color: var(--yellow);
+    text-transform: lowercase;
+    margin: 56px 0 24px;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Sobre la radio ---------- */
+.about {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.about .photo {
+    width: 31%;
+    min-width: 220px;
+    aspect-ratio: 387 / 484;
+    flex-shrink: 0;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.15);
+    background: #111;
+}
+.about-text p {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    max-width: 460px;
+    margin: 0 0 16px;
+}
+.about-text .section-sublabel {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.85;
+    margin: 0;
+}
+
+/* ---------- Dates: banda roja con 6 fechas ---------- */
+.dates-banner {
+    background-image: url('../img/shapes/rectangle-8.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    aspect-ratio: 1067 / 319;
+    padding: 40px 90px 40px 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 20px;
+    text-align: center;
+    align-content: center;
+}
+.dates-banner .date-item {
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: var(--hf);
+}
+.dates-banner .date-item .day {
+    display: block;
+}
+
+/* ---------- Programación: banda roja tipo flecha (horarios de la radio) ---------- */
+.arrow-banner {
+    background: var(--red);
+    padding: 40px 50px;
+    clip-path: polygon(
+        3% 0%, 33% 0%, 36% 22%, 64% 0%, 67% 0%, 97% 0%,
+        100% 50%,
+        97% 100%, 67% 100%, 64% 78%, 36% 100%, 33% 100%, 3% 100%,
+        0% 50%
+    );
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 20px;
+    text-align: center;
+}
+.arrow-banner .slot {
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.arrow-banner .slot .time {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* ---------- Merch ---------- */
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.merch-item .photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.15);
+    background: #111;
+}
+.merch-item .name {
+    margin: 10px 0 2px;
+    font-size: 13px;
+    font-weight: 700;
+}
+.merch-item .price {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--yellow);
+}
+
+/* ---------- Escuchar ---------- */
+.listen {
+    margin: 50px 0 20px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ash);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ash);
+}
+
+.dot.live {
+    background: var(--red);
+    box-shadow: 0 0 0 3px rgba(190,73,73,0.25);
+    animation: pulse 1.4s infinite;
+}
+
+.dot.online {
+    background: var(--yellow);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+audio {
+    width: 100%;
+    max-width: 460px;
+    margin-bottom: 18px;
+    accent-color: var(--yellow);
+}
+
+.now-playing .label {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ash);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.now-playing .track {
+    margin: 3px 0 14px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.listeners {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ash);
+}
+
+.site-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ash);
+    border-top: 1px solid var(--hair);
+    margin-top: 60px;
+}
+
+/* ---------- Responsive: móvil ---------- */
+@media (max-width: 640px) {
+    body { padding: 10px; }
+    .site-frame { border-radius: 10px; }
+
+    main { padding: 0 16px; }
+
+    .header {
+        height: auto;
+        padding: 16px;
+    }
+    .header-inner { position: static; }
+    .header .flag {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 14px 16px;
+    }
+    .header .wordmark {
+        position: static;
+        max-width: 100%;
+        font-size: 30px;
+        margin: 0;
+    }
+    .header .nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 14px 16px;
+    }
+    .header .nav a {
+        position: static;
+        font-size: 12px;
+    }
+
+    .hero-banner { padding: 0 12px; }
+    .hero-banner .hero-media { aspect-ratio: 4 / 3; }
+    .hero-overlay {
+        flex-direction: row;
+        gap: 10px;
+        right: 10px;
+        top: 10px;
+    }
+    .hero-status { max-width: 140px; font-size: 11px; }
+    .hero-tag { right: 8%; bottom: 8%; }
+    .tag-title { font-size: 22px; }
+    .tag-badge { font-size: 10px; padding: 5px 10px; }
+
+    .section-label { font-size: 26px; margin: 40px 0 18px; }
+
+    .about { flex-direction: column; gap: 20px; }
+    .about .photo { width: 100%; max-width: 320px; }
+    .about-text p { font-size: 15px; }
+
+    .dates-banner {
+        grid-template-columns: 1fr 1fr;
+        aspect-ratio: auto;
+        padding: 30px 20px;
+        gap: 20px 14px;
+        background-image: none;
+        background-color: var(--red);
+    }
+    .dates-banner .date-item { font-size: 13px; }
+
+    .arrow-banner {
+        grid-template-columns: 1fr;
+        padding: 30px 24px;
+        clip-path: polygon(
+            0% 4%, 96% 0%, 100% 8%,
+            100% 92%, 96% 100%, 0% 96%
+        );
+        gap: 16px;
+    }
+
+    .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+/* Historial desplazable con portadas */
+#trackHistory { max-height: 440px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--yellow) #222; padding-right: 14px; }
+#trackHistory:focus-visible { outline: 2px solid var(--yellow); outline-offset: 6px; }
+#trackHistory li { align-items: center; gap: 16px; padding: 16px 0; }
+#trackHistory .track-cover { width: 64px; height: 64px; flex: 0 0 64px; background: #222; border: 1px solid #444; display: grid; place-items: center; color: var(--yellow); font-size: 30px; overflow: hidden; }
+.track-cover img { width: 100%; height: 100%; object-fit: cover; }
+.track-details { flex: 1; min-width: 0; }
+#trackHistory .track-details span { display: block; font-size: 19px; }
+.track-details small, .track-details a { display: block; margin-top: 5px; font-size: 12px; color: #aaa; overflow-wrap: anywhere; }
+.track-details a { color: var(--yellow); text-decoration: none; }
+.track-details a:hover { text-decoration: underline; }
+@media (max-width: 600px) { #trackHistory { max-height: 380px; } #trackHistory li { gap: 10px; } #trackHistory li::before { display: none; } #trackHistory .track-details span { font-size: 16px; } #trackHistory time { font-size: 11px; } }
+/* PANORAMA / Objetos 001 */
+.merch-collection { margin: 72px 0; scroll-margin-top: 24px; }
+.merch-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; border-top: 1px solid #555; padding-top: 24px; margin-bottom: 30px; }
+.merch-eyebrow { color: var(--yellow); font-size: 11px; letter-spacing: .18em; margin: 0 0 14px; }
+.merch-heading h2 { font-size: clamp(28px, 4vw, 52px); letter-spacing: -.04em; margin: 0; line-height: 1.1; }
+.merch-edition { text-align: right; font-size: 12px; line-height: 1.7; color: #aaa; }
+.merch-image { display: block; position: relative; overflow: hidden; background: #f4f1ea; }
+.merch-item .photo { display: block; width: 100%; aspect-ratio: 1; height: auto; object-fit: contain; filter: none; transition: transform .3s; }
+.merch-image:hover .photo { transform: scale(1.035); }
+.merch-image:focus-visible { outline: 3px solid var(--yellow); outline-offset: 5px; }
+.merch-zoom { position: absolute; bottom: 12px; right: 12px; background: #111; color: #fff; padding: 8px 10px; font-size: 10px; }
+.merch-name { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; }
+.merch-name h3 { margin: 0; font-size: 23px; font-weight: 500; }
+.merch-name span { color: var(--yellow); font-size: 11px; }
+.merch-description { color: #aaa; font-size: 12px; line-height: 1.6; margin: 8px 0; }
+.merch-note { color: #888; font-size: 11px; margin-top: 26px; }
+@media (max-width: 600px) { .merch-collection .merch-grid { grid-template-columns: 1fr; gap: 32px; } .merch-heading { align-items: start; flex-direction: column; } .merch-edition { text-align: left; } }
