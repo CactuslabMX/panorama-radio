@@ -459,12 +459,20 @@ audio {
         position: static;
         width: 100%;
         height: auto;
-        padding: 14px 16px;
+        aspect-ratio: 3 / 1;
+        container-type: inline-size;
+        padding: 0 3.4% 3.4%;
+        background-image: none;
+        background-color: var(--paper);
+        clip-path: polygon(0 0, 34% 39%, 100% 15%, 100% 100%, 0 100%);
     }
     .header .wordmark {
         position: static;
         max-width: 100%;
-        font-size: 30px;
+        font-size: 15cqw;
+        line-height: 1;
+        letter-spacing: -.025em;
+        white-space: nowrap;
         margin: 0;
     }
     .header .nav {
@@ -485,12 +493,20 @@ audio {
     .hero-banner { padding: 0 12px; }
     .hero-banner .hero-media { aspect-ratio: 4 / 3; }
     .hero-overlay {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 44px;
         gap: 10px;
         right: 10px;
+        left: 10px;
         top: 10px;
+        max-width: none;
     }
-    .hero-status { max-width: 140px; font-size: 11px; }
+    .hero-status { min-width: 0; max-width: none; font-size: 11px; text-align: left; }
+    .hero-meta { justify-content: flex-start; gap: 8px; }
+    .hero-status #heroTrack { font-size: 18px; line-height: 1.2; }
+    .hero-play { width: 44px; height: 44px; }
+    .hero-volume { grid-column: 1 / -1; justify-content: flex-end; gap: 8px; }
+    .hero-volume input { width: 88px; }
     .hero-tag { right: 8%; bottom: 8%; }
     .tag-title { font-size: 22px; }
     .tag-badge { font-size: 10px; padding: 5px 10px; }
