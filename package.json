@@ -1,0 +1,12 @@
+{
+  "name": "panorama-radio",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-pages.cjs",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name panorama-radio --branch main",
+    "test": "node --test tests/pages.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.147.0"
+  }
+}

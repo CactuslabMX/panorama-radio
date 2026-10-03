@@ -1,0 +1,6 @@
+Options -Indexes
+RewriteEngine On
+
+# Only publish the page, static assets and radio endpoints.
+RewriteRule ^(?:$|index\.php$|ajax/(?:status|stream|artwork)\.php$|assets/(?:css|js|img)/[a-zA-Z0-9_./-]+\.(?:css|js|png|jpe?g|webp|gif|gifv|svg|ico|woff2?)$) - [END]
+RewriteRule ^ - [F,END]
