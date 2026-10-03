@@ -8,10 +8,16 @@
     tickClock();
     setInterval(tickClock, 1000);
 
-    const statusText = document.getElementById('statusText');
-    const statusDot = document.getElementById('statusDot');
-    const trackTitle = document.getElementById('trackTitle');
     const listenerCount = document.getElementById('listenerCount');
+    const listenerBadge = document.getElementById('listenerBadge');
+    function updateListeners(value) {
+        const count = Number(value);
+        const known = value !== null && value !== undefined && Number.isFinite(count) && count >= 0;
+        listenerCount.textContent = known ? String(Math.floor(count)) : '—';
+        const label = known ? Math.floor(count) + (count === 1 ? ' oyente conectado' : ' oyentes conectados') : 'Número de oyentes no disponible';
+        listenerBadge.setAttribute('aria-label', label);
+        listenerBadge.title = label;
+    }
     const heroTrack = document.getElementById('heroTrack');
     const historyList = document.getElementById('trackHistory');
     const historyEmpty = document.getElementById('historyEmpty');
@@ -97,23 +103,15 @@
             renderHistory(data.history);
 
             if (!data.online) {
-                statusText.textContent = 'Fuera de línea';
-                statusDot.className = 'dot';
-                trackTitle.textContent = '—';
-                listenerCount.textContent = '0';
-                if (heroTrack) heroTrack.textContent = '—';
+                updateListeners(0);
+                if (heroTrack) heroTrack.textContent = 'Fuera de línea';
                 return;
             }
 
-            statusText.textContent = data.live ? 'EN VIVO' : 'Playlist automática';
-            statusDot.className = 'dot ' + (data.live ? 'live' : 'online');
-            trackTitle.textContent = data.title || 'Sin información';
-            listenerCount.textContent = data.listeners ?? 0;
+            updateListeners(data.listeners);
             if (heroTrack) heroTrack.textContent = data.title || 'Sin información';
         } catch (err) {
-            statusText.textContent = 'Sin conexión';
-            statusDot.className = 'dot';
-            trackTitle.textContent = 'Título no disponible';
+            updateListeners(null);
             if (heroTrack) heroTrack.textContent = 'Título no disponible';
         } finally {
             setTimeout(fetchStatus, 5000);

@@ -1,8 +1,14 @@
-<section class="hero-banner">
+<section class="hero-banner" id="escuchar">
         <div class="hero-media">
             <img src="<?= htmlspecialchars($baseUrl) ?>/assets/img/radio.gifv" alt="">
             <div class="hero-overlay">
-                <p class="hero-status">Sonando ahora<span id="heroTrack" aria-live="polite">Consultando canción…</span><span id="playbackMessage" role="status"></span></p>
+                <div class="hero-status">
+                    <div class="hero-meta">Sonando ahora <span class="hero-listeners" id="listenerBadge" role="img" aria-label="Consultando oyentes" title="Oyentes conectados">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 9v-2a6 6 0 0 0-2-4"/></svg>
+                        <span id="listenerCount">—</span>
+                    </span></div>
+                    <span id="heroTrack" aria-live="polite">Consultando canción…</span><span id="playbackMessage" role="status"></span>
+                </div>
                 <button class="hero-play" id="heroPlayBtn" aria-label="Reproducir">
                     <svg id="heroPlayIcon" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
                 </button>
@@ -12,7 +18,9 @@
                     <output id="audioVolumeValue" for="audioVolume">100%</output>
                 </div>
             </div>
-            
+            <audio id="audioPlayer" preload="none" hidden>
+                <source src="<?= htmlspecialchars($streamUrl) ?>" type="audio/mpeg">
+            </audio>
         </div>
     </section>
 
@@ -62,25 +70,4 @@
                 <?php endforeach; ?>
             </div>
             <p class="merch-note">Vista previa de la colección · Próximamente</p>
-        </section>
-        <div class="section-label">escuchar_</div>
-        <section class="listen" id="escuchar">
-            <div class="status-badge" id="statusBadge">
-                <span class="dot" id="statusDot"></span>
-                <span id="statusText">Conectando...</span>
-            </div>
-
-            <audio id="audioPlayer" controls preload="none">
-                <source src="<?= htmlspecialchars($streamUrl) ?>" type="audio/mpeg">
-                Tu navegador no soporta audio HTML5.
-            </audio>
-
-            <div class="now-playing">
-                <p class="label">Sonando ahora</p>
-                <p class="track" id="trackTitle">Cargando...</p>
-            </div>
-
-            <div class="listeners">
-                <span id="listenerCount">0</span> oyentes conectados
-            </div>
         </section>
