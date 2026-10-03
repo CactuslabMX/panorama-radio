@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap');
 
+@font-face {
+    font-family: "Panorama Helvetica";
+    src: url('../fonts/Helvetica-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
 :root {
     --ink: #000000;
     --paper: #ffffff;
@@ -70,7 +78,7 @@ body {
     position: static;
     font-size: clamp(30px, 4.8vw, 66px);
     font-weight: 700;
-    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Panorama Helvetica", Helvetica, Arial, sans-serif;
     letter-spacing: -0.01em;
     color: var(--ink);
     text-transform: uppercase;
@@ -555,7 +563,7 @@ audio {
 .merch-collection { margin: 72px 0; scroll-margin-top: 24px; }
 .merch-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; border-top: 1px solid #555; padding-top: 24px; margin-bottom: 30px; }
 .merch-eyebrow { color: var(--yellow); font-size: 11px; letter-spacing: .18em; margin: 0 0 14px; }
-.merch-heading h2 { font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: clamp(28px, 4vw, 52px); letter-spacing: -.04em; margin: 0; line-height: 1.1; }
+.merch-heading h2 { font-family: "Panorama Helvetica", Helvetica, Arial, sans-serif; font-size: clamp(28px, 4vw, 52px); letter-spacing: -.04em; margin: 0; line-height: 1.1; }
 .merch-edition { text-align: right; font-size: 12px; line-height: 1.7; color: #aaa; }
 .merch-image { display: block; position: relative; overflow: hidden; background: #f4f1ea; }
 .merch-item .photo { display: block; width: 100%; aspect-ratio: 1; height: auto; object-fit: contain; filter: none; transition: transform .3s; }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($siteName) ?></title>
+    <link rel="preload" href="<?= htmlspecialchars($baseUrl) ?>/assets/fonts/Helvetica-Bold.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="<?= htmlspecialchars($baseUrl) ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../../../assets/css/style.css') ?>">
 </head>
 <body>
