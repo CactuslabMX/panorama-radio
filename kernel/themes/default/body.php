@@ -44,12 +44,12 @@
         </section>
 
         <section class="merch-collection" id="merch" aria-labelledby="merchHeading">
-            <div class="merch-heading"><div><p class="merch-eyebrow">PANORAMA / OBJETOS 001</p><h2 id="merchHeading">Habitar el sonido.</h2></div><span class="merch-edition">Colección arquitectónica<br>Negro · Marfil · Amarillo</span></div>
+            <div class="merch-heading"><div><p class="merch-eyebrow">PANORAMA / RADIO INDEPENDIENTE</p><h2 id="merchHeading">Para escuchar distinto.</h2></div><span class="merch-edition">Música, arte y otras frecuencias.<br>Colección 01</span></div>
             <div class="merch-grid">
                 <?php foreach ([
-                    ['001', 'Volumen', 'Playera negra / Gráfica axonométrica', 'panorama-volumen.png', 'Playera negra PANORAMA con dibujo de volúmenes arquitectónicos'],
-                    ['002', 'Perfil', 'Gorra bicolor / Líneas en relieve', 'panorama-perfil.png', 'Gorra negra y marfil PANORAMA con símbolo arquitectónico'],
-                    ['003', 'Patio', 'Hoodie marfil / Plano de patio central', 'panorama-patio.png', 'Hoodie marfil PANORAMA con plano arquitectónico'],
+                    ['001', 'Señal', 'Playera negra / Tipografía y sonido en verde menta', 'panorama-indie-shirt.png', 'Playera negra PANORAMA Radio Independiente con gráfica sonora en verde menta'],
+                    ['002', 'Frecuencia', 'Gorra 5 panel / Taupe, bordado marfil y menta', 'panorama-indie-cap.png', 'Gorra PANORAMA de cinco paneles, visera plana y logotipo bordado'],
+                    ['003', 'En el aire', 'Hoodie marfil / Gráfica de señal en rojo óxido', 'panorama-indie-hoodie.png', 'Hoodie marfil PANORAMA Radio Independiente con pequeña onda sonora roja'],
                 ] as [$number, $name, $description, $file, $alt]): ?>
                 <article class="merch-item">
                     <a class="merch-image" href="<?= htmlspecialchars($baseUrl) ?>/assets/img/<?= $file ?>" target="_blank" rel="noopener" aria-label="Ampliar diseño <?= $name ?>">
