@@ -21,6 +21,7 @@ foreach ($assets as $file) {
     copy($file->getPathname(), $target);
 }
 copy($root . '/cloudflare/worker.mjs', $out . '/_worker.js');
+copy($root . '/cloudflare/chat.mjs', $out . '/chat.mjs');
 file_put_contents($out . '/_routes.json', json_encode(['version' => 1, 'include' => ['/ajax/*'], 'exclude' => []]));
 file_put_contents($out . '/_headers', "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n");
 echo "Cloudflare Pages build ready in dist/\n";

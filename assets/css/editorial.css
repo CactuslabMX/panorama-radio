@@ -1,0 +1,65 @@
+/* PANORAMA / Azul editorial. Layout and interactions remain in style.css. */
+:root {
+    --panel: #FFFDF9;
+    --nav-panel: #E5E5E0;
+    --bubble: #ECE8E0;
+    --accent-detail: #55575C;
+    --blue-hover: #06277D;
+}
+body { background: var(--blue); color: var(--ink); }
+.site-frame { background: var(--paper); }
+.header .flag {
+    background-image: none;
+    background-color: var(--blue);
+    clip-path: polygon(0 0, 34% 39%, 100% 15%, 100% 100%, 0 100%);
+}
+.header .wordmark { color: var(--paper); max-width: 100%; margin-bottom: 10px; }
+.header .nav { background-image: none; background-color: var(--nav-panel); }
+.header .nav a { color: var(--blue); }
+.header .nav a:hover { color: var(--accent-detail); }
+.header .nav a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.hero-status { color: var(--paper); }
+.hero-status span { color: var(--paper); }
+.hero-volume { color: var(--paper); }
+.hero-volume button:hover { color: #D2D3D5; }
+.hero-volume button:focus-visible, .hero-volume input:focus-visible { outline-color: var(--paper); }
+.hero-volume input { background: linear-gradient(to right, #D2D3D5 var(--volume, 100%), #777 var(--volume, 100%)); }
+.hero-volume input::-webkit-slider-thumb { background: #D2D3D5; }
+.hero-volume input::-moz-range-thumb { background: #D2D3D5; }
+.hero-play { box-shadow: 0 0 0 1px rgba(255, 255, 255, .5); }
+.hero-play:hover { background: #414348; }
+#trackHistory { scrollbar-color: var(--accent) var(--bubble); }
+#trackHistory li { border-top-color: var(--hair); }
+#trackHistory time, #historyEmpty, .track-details small { color: var(--ash); }
+#trackHistory .track-cover { background: var(--panel); border-color: var(--hair); }
+.about-wrapper > .section-label { color: var(--blue); }
+.merch-heading h2, .merch-name h3 { color: var(--ink); }
+.merch-edition, .merch-description, .merch-note { color: var(--ash); }
+.merch-image { background: var(--panel); }
+.dates-banner { background-image: none; background-color: var(--accent); }
+.dates-banner .date-item { color: #fff; }
+.chat-eyebrow, .chat-section-heading > p, #chatStatus, .chat-welcome p,
+.chat-message-meta time, .chat-empty span, .chat-name label,
+#chatCounter, .chat-note, .chat-note span { color: var(--ash); }
+.chat-shell { background: var(--panel); border-color: var(--hair); border-top-color: var(--accent); }
+.chat-topline { background: var(--panel); border-bottom-color: var(--hair); }
+#chatStatus::before { background: var(--ash); }
+#chatStatus[data-state="online"]::before { background: var(--blue); }
+.chat-message-meta strong { color: var(--ink); }
+.chat-message--own .chat-message-meta strong { color: var(--blue); }
+.chat-messages { scrollbar-color: var(--blue) var(--bubble); }
+.chat-message p { background: var(--bubble); color: var(--ink); border-color: var(--bubble); }
+.chat-message--own p { background: var(--blue); border-color: var(--blue); color: #fff; }
+.chat-empty { color: var(--ink); }
+.radio-chat button { background: var(--blue); color: #fff; }
+.radio-chat button:hover { background: var(--blue-hover); }
+.radio-chat .chat-latest { box-shadow: 0 4px 20px #14192322; }
+.chat-form { background: var(--panel); border-top-color: var(--hair); }
+.chat-name input { color: var(--ink); border-bottom-color: #94928E; }
+.chat-name input::placeholder, .chat-compose textarea::placeholder { color: var(--ash); opacity: 1; }
+.chat-compose { background: var(--panel); border-color: #94928E; }
+.chat-compose:focus-within { border-color: var(--blue); }
+.chat-compose textarea { color: var(--ink); }
+.chat-error { background: var(--panel); color: var(--accent-detail); }
+.site-footer { color: var(--paper); background: var(--blue); }
+@media (max-width: 640px) { .header .wordmark { margin-bottom: 0; } }

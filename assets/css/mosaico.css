@@ -1,0 +1,110 @@
+/* PANORAMA: mosaico editorial. Keeps the existing player and chat behavior. */
+@font-face{font-family:"Panorama Helvetica";src:url('../fonts/Helvetica-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+:root{--hf:"Panorama Helvetica",Helvetica,sans-serif;--ink:#25262a;--frame-w:1440px}
+body{padding:0;background:var(--paper);color:var(--ink)}
+.site-frame{max-width:none;width:100%;margin:0;border:2px solid var(--ink);border-radius:0;min-height:0;overflow:clip}
+.header{height:auto;padding:0}
+.header-inner{max-width:none;height:auto;container-type:inline-size}
+.brand-topline{display:flex;justify-content:space-between;gap:16px;padding:14px 22px;border-bottom:2px solid var(--ink);font-size:11px;letter-spacing:.08em}
+.header .flag{position:relative;inset:auto;width:calc(100% - 44px);height:20cqw;margin:22px;aspect-ratio:auto;padding:0 2cqw 1.2cqw;container-type:normal}
+.header .wordmark{max-width:100%;font-size:8.5cqw;line-height:1;letter-spacing:-.035em;margin:0;white-space:nowrap}
+.header .nav{position:static;width:100%;height:auto;margin:0;padding:0;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:var(--paper);border-top:2px solid var(--ink)}
+.header .nav a{padding:20px 24px;border-right:2px solid var(--ink);font-size:14px;font-weight:400;text-transform:none;display:flex;align-items:center;justify-content:space-between;color:var(--ink);min-height:50px}
+.header .nav a:last-child{border:0}
+.header .nav a::after{content:'↘'}
+.header .nav a:hover{background:var(--ink);color:var(--paper)}
+main{max-width:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;background:var(--ink);border-top:2px solid var(--ink)}
+main>section{min-width:0;background:var(--paper);scroll-margin-top:16px}
+.hero-banner{grid-column:1/-1;max-width:none;padding:0;margin:0;width:100%}
+.hero-banner .hero-media{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;aspect-ratio:auto;overflow:visible;background:var(--ink);border:0}
+.hero-photo{grid-column:4/span 2;grid-row:1;min-height:350px;position:relative;overflow:hidden}
+.hero-banner .hero-photo img{position:absolute;width:100%;height:100%;object-fit:cover}
+.hero-photo span{position:absolute;bottom:18px;left:18px;right:18px;width:fit-content;background:var(--paper);color:var(--ink);font-size:10px;letter-spacing:.05em;padding:7px 9px}
+.hero-overlay{position:static;grid-column:1/span 3;grid-row:1;display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-rows:1fr auto;align-items:end;gap:22px;max-width:none;min-width:0;border-radius:0;background:var(--blue);padding:30px;min-height:350px}
+.hero-status{grid-column:1/-1;align-self:start;text-align:left;max-width:none;min-width:0;font-size:11px;font-weight:400}
+.hero-meta{justify-content:space-between;letter-spacing:.08em}
+.hero-status #heroTrack{font-size:clamp(28px,3.6vw,50px);line-height:1.08;font-weight:400;letter-spacing:-.04em;margin-top:42px}
+.hero-status #playbackMessage{margin-top:15px;line-height:1.5;letter-spacing:0}
+.hero-play{width:64px;height:52px;border-radius:0;background:var(--paper);box-shadow:none}
+.hero-play svg{fill:var(--blue);width:22px;height:22px}
+.hero-play:hover{background:#e5e5e0}
+.hero-volume{grid-column:2;justify-content:flex-end;min-width:0;gap:10px}
+.hero-volume input{width:clamp(60px,9vw,130px)}
+.hero-volume button{width:44px;height:44px;padding:10px}
+.hero-volume output{display:block}
+.mosaic-shape{position:relative;overflow:hidden;background:var(--paper);min-height:170px}
+.hero-media>.mosaic-shape{grid-column:6;grid-row:1}
+.mosaic-shape::before{content:'';position:absolute;width:180%;aspect-ratio:1;border:clamp(30px,4vw,60px) solid var(--accent);border-radius:50%;left:-90%;top:10%}
+.recent-tracks{grid-column:span 3;margin:0;padding:30px}
+.section-eyebrow{font-size:11px;letter-spacing:.09em;text-transform:uppercase;margin:0;color:var(--ash)}
+.recent-tracks .section-label{display:block;color:var(--ink);font-size:34px;font-weight:400;text-align:left;margin:14px 0 28px;letter-spacing:-.04em}
+.recent-tracks .section-label::before{display:none}
+#trackHistory{max-height:520px;padding-right:10px;margin-bottom:0}
+#trackHistory li{gap:12px}
+#trackHistory .track-details span{font-size:18px;font-weight:400}
+#trackHistory .track-cover{width:54px;height:54px;flex-basis:54px}
+#trackHistory time{font-size:11px;white-space:nowrap}
+.radio-chat{grid-column:span 3;max-width:none;width:100%;margin:0;padding:30px;background:#e5e5e0}
+.chat-section-heading{align-items:start;margin-bottom:22px;gap:16px}
+.chat-section-heading h2{font-weight:400;font-size:42px;color:var(--ink)}
+.chat-section-heading>p{font-size:12px}
+.chat-shell{border:1px solid var(--hair);border-radius:0}
+.chat-topline{padding:16px}
+.chat-room-tag{display:none}
+.chat-monogram{border-radius:0}
+.chat-welcome{min-height:290px}
+.radio-chat button{border-radius:0}
+.chat-messages{height:300px;padding:20px}
+.chat-form{padding:16px}
+.chat-name{flex-wrap:wrap}
+.chat-name input{flex:1;width:100px}
+.chat-compose{border-radius:0}
+.chat-compose textarea{border-radius:0}
+.radio-chat #chatSend{border-radius:0}
+.chat-message p{border-radius:0}
+.chat-message--own p{border-radius:0}
+.about-wrapper{grid-column:1/-1;padding:34px;background:var(--ink);color:var(--paper)}
+.about-wrapper>.section-label{color:var(--paper);font-size:11px;letter-spacing:.1em;text-align:left;margin:0;text-transform:uppercase;font-weight:400}
+.about-title{font-size:clamp(32px,5vw,72px);font-weight:400;line-height:1.04;letter-spacing:-.04em;margin:34px 0}
+.about-text p{font-weight:400;font-size:16px;max-width:560px;line-height:1.6}
+.about-text .section-sublabel{background:none;clip-path:none;padding:0;font-size:11px;margin-top:26px}
+.merch-preview{grid-column:span 2;display:flex;flex-direction:column}
+.merch-preview img{display:block;width:100%;height:220px;object-fit:contain;background:#fff}
+.merch-preview>div{padding:26px}
+.merch-preview h2{font-size:32px;font-weight:400;letter-spacing:-.04em;margin:14px 0 26px}
+.merch-preview a{color:var(--ink);font-size:14px;text-underline-offset:5px}
+.merch-collection{grid-column:1/-1;margin:0;padding:30px}
+.merch-heading{border:0;padding:0;margin:0 0 28px}
+.merch-cutout{display:none}
+.merch-heading h2{font-size:38px;font-weight:400}
+.merch-grid{gap:2px;background:var(--ink);border:1px solid var(--ink)}
+.merch-item{min-width:0;background:var(--paper)}
+.merch-name,.merch-description{margin:16px 20px}
+.merch-name>span{clip-path:none;background:none;color:var(--ash);padding:0}
+.merch-zoom{clip-path:none}
+.merch-note{margin-bottom:0}
+.site-footer{max-width:none;width:100%;margin:0;padding:22px;display:flex;justify-content:space-between;gap:16px;font-size:11px}
+@media(max-width:900px){.hero-overlay{padding:24px;gap:16px}.hero-volume output{display:none}.radio-chat,.recent-tracks{padding:22px}.chat-section-heading{flex-direction:column;gap:10px}.chat-section-heading>p{text-align:left}.chat-section-heading>p br{display:none}#trackHistory li::before{display:none}.hero-status #heroTrack{font-size:32px}}
+@media(max-width:640px){body{padding:8px}.brand-topline{font-size:9px;padding:12px;gap:10px}.header .flag{width:calc(100% - 24px);height:30cqw;margin:12px;padding:0 2cqw 1.5cqw}.header .wordmark{font-size:12cqw;margin:0}.header .nav a{padding:15px 10px;font-size:12px}.header .nav a::after{display:none}main{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-banner .hero-media{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-overlay{grid-column:1/-1;grid-row:1;min-height:300px;padding:24px;grid-template-columns:64px minmax(0,1fr)}.hero-photo{grid-column:1;grid-row:2;min-height:190px}.hero-media>.mosaic-shape{grid-column:2;grid-row:2}.hero-volume{grid-column:2}.hero-volume input{width:90px}.hero-status #heroTrack{font-size:32px;margin-top:34px}.hero-status{font-size:11px}.hero-play{width:64px;height:52px}.hero-photo span{font-size:9px;bottom:12px;left:12px;right:12px}.recent-tracks,.radio-chat,.about-wrapper,.merch-preview{grid-column:1/-1}.recent-tracks,.radio-chat{padding:24px 18px}.recent-tracks .section-label{font-size:32px}.chat-section-heading h2{font-size:40px}.chat-topline{padding:14px}.chat-messages{padding:16px}.chat-form{padding:12px}.about-wrapper{padding:28px 22px}.merch-preview{display:grid;grid-template-columns:1fr 1fr;align-items:center}.merch-preview img{height:190px}.merch-preview>div{padding:18px}.merch-preview h2{font-size:26px}.merch-collection{padding:24px 18px}.merch-collection .merch-grid{grid-template-columns:1fr;gap:2px}.merch-heading h2{font-size:32px}.merch-heading{gap:12px}.site-footer{flex-wrap:wrap;padding:18px}.mosaic-shape::before{border-width:38px}}
+@media(prefers-reduced-motion:reduce){.merch-item .photo{transition:none}}
+/* Full-width composition: About and Merch each occupy their own row. */
+.header .flag{height:clamp(180px,20cqw,300px)}
+.header .wordmark{font-size:clamp(44px,8.5cqw,128px)}
+@media(min-width:901px){.about-wrapper{display:grid;grid-template-columns:1fr 1fr;column-gap:60px;align-items:center}.about-wrapper>.section-label{grid-column:1/-1}.about-title{margin:32px 0}.about{min-width:0}.about-text p{max-width:680px}}
+@media(max-width:640px){body{padding:0}.header .flag{height:30cqw}.header .wordmark{font-size:12cqw}}
+/* Helvetica Regular for body copy; the supplied Bold face for section titles. */
+button,input,textarea,select,output{font-family:var(--hf)}
+.recent-tracks .section-label,.chat-section-heading h2,.about-title,
+.merch-heading h2,.merch-name h3,.chat-room-title h3,.chat-welcome h4,
+.section-eyebrow,.chat-eyebrow,.merch-eyebrow,
+.about-wrapper>.section-label,.about-text .section-sublabel,.hero-meta{font-weight:700}
+/* Footer reserves a central area for the station's official social links. */
+.site-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px 28px;padding:28px 24px}
+.site-footer>p:first-child{grid-column:1;text-align:left}
+.site-footer>p:last-child{grid-column:3;text-align:right}
+.footer-socials{grid-column:2;grid-row:1;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.footer-socials a,.footer-social-icon{display:grid;place-items:center;width:44px;height:44px;color:var(--paper);border:1px solid transparent;text-decoration:none}
+.footer-socials a:hover{background:var(--paper);color:var(--blue)}
+.footer-socials a:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+.footer-socials svg{width:21px;height:21px}
+@media(max-width:640px){.site-footer{grid-template-columns:1fr;padding:24px 18px;gap:16px}.site-footer>p:first-child,.site-footer>p:last-child{grid-column:1;text-align:center}.footer-socials{grid-column:1;grid-row:2}}

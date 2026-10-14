@@ -1,3 +1,4 @@
+import { handleChat } from './chat.mjs';
 const endpoints = new Set(['/ajax/status.php', '/ajax/artwork.php', '/ajax/stream.php']);
 function unavailable(path) {
   const data = path === '/ajax/status.php'
@@ -8,6 +9,7 @@ function unavailable(path) {
 export default {
   async fetch(request, env) {
     const incoming = new URL(request.url);
+    if (incoming.pathname === '/ajax/chat.php') return handleChat(request, env);
     if (!incoming.pathname.startsWith('/ajax/')) return env.ASSETS.fetch(request);
     if (!endpoints.has(incoming.pathname)) return new Response('Not found', { status: 404 });
     if (!['GET', 'HEAD'].includes(request.method)) return new Response('Method not allowed', { status: 405, headers: { Allow: 'GET, HEAD' } });
